@@ -34,19 +34,19 @@ import org.apache.http.util.EntityUtils;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class EnrichStepDefinitions {
+    public class EnrichStepDefinitions {
 
-    private static final String JSON_TYPE = "application/json;charset=UTF-8";
+        private static final String JSON_TYPE = "application/json;charset=UTF-8";
 
-    @Autowired
-    private Config config;
+        @Autowired
+        private Config config;
 
-    @Autowired
-    private EnrichResults searchResults;
-    private String strOrganizationId, strCategoryId;
+        @Autowired
+        private EnrichResults searchResults;
+        private String strOrganizationId, strCategoryId;
 
-    @Given("An organization is created in enrich")
-    public void createOrganization() {
+        @Given("An organization is created")
+        public void createOrganization() {
 
         HttpClient httpClientCreateOrganization = HttpClients.createDefault();
         try {
@@ -61,7 +61,7 @@ public class EnrichStepDefinitions {
                     " \"type\": \"Organization\"," +
                     " \"attributes\": " +
                     "{" +
-                    " \"name\": \"Test Automation Inc 5\"" +
+                    " \"name\": \"Organization9\"" +
                     "}" +
                     "}" +
                     "}";
@@ -79,17 +79,37 @@ public class EnrichStepDefinitions {
             JSONArray jsonArrData = new JSONArray();
             jsonArrData.put(jsonObjData);
 
-            for (int i = 0; i < jsonArrData.length(); i++) {
-                JSONObject jsonObjId = jsonArrData.getJSONObject(0);
-                strOrganizationId = jsonObjId.getString("id");
-                System.out.println(strOrganizationId);
-            }
-        } catch (Exception e) {
+        for (int i = 0; i < jsonArrData.length(); i++) {
+            JSONObject jsonObjId = jsonArrData.getJSONObject(0);
+            strOrganizationId = jsonObjId.getString("id");
+            System.out.println(strOrganizationId);
+        }
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+    @Given("^An organization is deleted$")
+
+    public void deleteOrganization() throws Throwable {
+
+        HttpClient httpClientDeleteOrganization = HttpClients.createDefault();
+        try {
+            URIBuilder builderDeleteOrganization = new URIBuilder(config.getUrl() + "/organizations/" + strOrganizationId.trim());
+            URI uriDeleteOrganization = builderDeleteOrganization.build();
+            HttpDelete requestDeleteOrganization = new HttpDelete(uriDeleteOrganization);
+            requestDeleteOrganization.setHeader("Content-Type", "application/vnd.api+json");
+            HttpResponse resDeleteOrganization = httpClientDeleteOrganization.execute(requestDeleteOrganization);
+
+            Assert.assertEquals(204, resDeleteOrganization.getStatusLine().getStatusCode());
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
 
-        @Given("A category is created in enrich")
+        @Given("A category is created")
         public void createCategory() {
 
             HttpClient httpClientCreateCategory = HttpClients.createDefault();
@@ -105,8 +125,8 @@ public class EnrichStepDefinitions {
                         " \"type\": \"Category\"," +
                         " \"attributes\": " +
                         "{" +
-                        " \"proprietaryId\": \"rxmt5NJ4\"," +
-                        " \"title\": \"Metal\"" +
+                        " \"proprietaryId\": \"rxmt5NJf\"," +
+                        " \"title\": \"Propellant\"" +
                         "}," +
                         " \"relationships\": " +
                         "{" +
@@ -116,12 +136,14 @@ public class EnrichStepDefinitions {
                         "}," +
                         " \"organization\": " +
                         "{" +
-                        " \"data\": {}" +
+                        " \"data\": {" +
+                        " \"type\": \"Organization\"," +
+                        " \"id\": \"" + strOrganizationId + "\"" +
+                        "}" +
                         "}" +
                         "}" +
                         "}" +
                         "}";
-
                 StringEntity entityCreateCategory = new StringEntity(payloadCreateCategory);
                 requestCreateCategory.setEntity(entityCreateCategory);
                 HttpResponse resCreateCategory = httpClientCreateCategory.execute(requestCreateCategory);
@@ -141,6 +163,26 @@ public class EnrichStepDefinitions {
                     System.out.println(strCategoryId);
                 }
             } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        @Given("^A category is deleted$")
+
+        public void deleteCategory() throws Throwable {
+
+            HttpClient httpClientDeleteCategory = HttpClients.createDefault();
+            try {
+                URIBuilder builderDeleteCategory = new URIBuilder(config.getUrl() + "/categories/" + strCategoryId.trim());
+                URI uriDeleteCategory = builderDeleteCategory.build();
+                HttpDelete requestDeleteCategory = new HttpDelete(uriDeleteCategory);
+                requestDeleteCategory.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resDeleteCategory = httpClientDeleteCategory.execute(requestDeleteCategory);
+
+                Assert.assertEquals(204, resDeleteCategory.getStatusLine().getStatusCode());
+            }
+            catch (Exception e)
+            {
                 System.out.println(e.getMessage());
             }
         }

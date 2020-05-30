@@ -3,55 +3,79 @@
     "line": 1,
     "elements": [
       {
-        "start_timestamp": "2020-05-30T14:43:30.371Z",
         "line": 3,
-        "name": "Create an Enrich Category",
+        "name": "Create Enrich test fixtures",
         "description": "",
-        "id": "categories;create-an-enrich-category",
-        "type": "scenario",
-        "keyword": "Scenario",
-        "steps": []
-      }
-    ],
-    "name": "Categories",
-    "description": "",
-    "id": "categories",
-    "keyword": "Feature",
-    "uri": "file:src/test/resources/scenarios/category.feature",
-    "tags": []
-  },
-  {
-    "line": 1,
-    "elements": [
-      {
-        "start_timestamp": "2020-05-30T14:43:30.421Z",
-        "line": 3,
-        "name": "Create an Enrich Organization",
-        "description": "",
-        "id": "organizations;create-an-enrich-organization",
-        "type": "scenario",
-        "keyword": "Scenario",
+        "type": "background",
+        "keyword": "Background",
         "steps": [
           {
             "result": {
-              "duration": 606000000,
+              "duration": 596000000,
               "status": "passed"
             },
             "line": 4,
-            "name": "An organization is created in enrich",
+            "name": "An organization is created",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
             },
             "keyword": "Given "
           }
         ]
+      },
+      {
+        "start_timestamp": "2020-05-30T17:56:57.509Z",
+        "line": 7,
+        "name": "Create an Enrich Category",
+        "description": "",
+        "id": "category;create-an-enrich-category",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 176000000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "A category is created",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createCategory()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 147000000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "A category is deleted",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 143000000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "An organization is deleted",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteOrganization()"
+            },
+            "keyword": "And "
+          }
+        ]
       }
     ],
-    "name": "Organizations",
+    "name": "Category",
     "description": "",
-    "id": "organizations",
+    "id": "category",
     "keyword": "Feature",
-    "uri": "file:src/test/resources/scenarios/organization.feature",
+    "uri": "file:src/test/resources/scenarios/category.feature",
     "tags": []
   }
 ]
