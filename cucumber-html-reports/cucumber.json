@@ -1,0 +1,57 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2020-05-30T14:43:30.371Z",
+        "line": 3,
+        "name": "Create an Enrich Category",
+        "description": "",
+        "id": "categories;create-an-enrich-category",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": []
+      }
+    ],
+    "name": "Categories",
+    "description": "",
+    "id": "categories",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/scenarios/category.feature",
+    "tags": []
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2020-05-30T14:43:30.421Z",
+        "line": 3,
+        "name": "Create an Enrich Organization",
+        "description": "",
+        "id": "organizations;create-an-enrich-organization",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 606000000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "An organization is created in enrich",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      }
+    ],
+    "name": "Organizations",
+    "description": "",
+    "id": "organizations",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/scenarios/organization.feature",
+    "tags": []
+  }
+]

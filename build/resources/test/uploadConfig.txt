@@ -1,0 +1,11 @@
+#sr-qa2 endpoint
+
+clientKey: 79f8b4fc-3ef1-472f-8545-b9691911f95c
+
+collection: apptest
+
+replaceCollection: true
+
+fieldDefinition: {name: "title", search: "All"}
+
+failOnFirstError: true

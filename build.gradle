@@ -1,0 +1,65 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+//                                                      VERSIONS                                                      //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+buildscript {
+    ext {
+        springBootVersion = "2.1.4.RELEASE"
+        cucumberVersion = "5.5.0"
+        groupbyCommonVersion = "189"
+        restAssuredVersion = "3.0.6"
+        junitVersion = "4.12"
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+//                                                      PLUGINS                                                       //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+buildscript {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id "java"
+}
+
+group "com.groupbyinc"
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = 1.8
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "io.rest-assured:json-path:${restAssuredVersion}"
+    testCompile group: "io.cucumber", name: "cucumber-java", version: "${cucumberVersion}"
+    testCompile group: "io.cucumber", name: "cucumber-junit", version: "${cucumberVersion}"
+    testCompile group: "junit", name: "junit", version: "${junitVersion}"
+    testCompile group: "io.cucumber", name: "cucumber-spring", version: "${cucumberVersion}"
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+    testCompile "io.rest-assured:rest-assured:${restAssuredVersion}"
+}

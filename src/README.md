@@ -1,4 +1,4 @@
-Purpose of the project is to smoke test the Enrich API endpoints.
+Purpose of the project is to smoke test integrated Seachandiser modules including Authentication, Ingestion, Command Center, Search etc.
 
 Smoke testing uses Cucumber Testing framework along with SpringBoot.
 Cucumber follows BDD (Behaviour Driven Driven). See https://cucumber.io/ for instructions how to work with Cucumber.
