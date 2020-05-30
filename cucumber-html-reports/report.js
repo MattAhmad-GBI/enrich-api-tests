@@ -10,7 +10,7 @@ formatter.background({
   "keyword": "Background"
 });
 formatter.step({
-  "name": "An organization is created",
+  "name": "The Customer creates an organization",
   "keyword": "Given "
 });
 formatter.match({
@@ -25,7 +25,7 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "A category is created",
+  "name": "The Customer creates a category",
   "keyword": "Given "
 });
 formatter.match({
@@ -35,7 +35,17 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "A category is deleted",
+  "name": "The Customer views a category",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "The Customer deletes the category",
   "keyword": "And "
 });
 formatter.match({
@@ -45,7 +55,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "An organization is deleted",
+  "name": "The Customer deletes the organization",
   "keyword": "And "
 });
 formatter.match({

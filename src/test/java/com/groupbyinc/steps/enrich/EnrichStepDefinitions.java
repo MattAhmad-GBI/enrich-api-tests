@@ -43,9 +43,9 @@ import static org.junit.Assert.assertEquals;
 
         @Autowired
         private EnrichResults searchResults;
-        private String strOrganizationId, strCategoryId;
+        private String strOrganizationId, strCategoryId, resViewCategory;
 
-        @Given("An organization is created")
+        @Given("The Customer creates an organization")
         public void createOrganization() {
 
         HttpClient httpClientCreateOrganization = HttpClients.createDefault();
@@ -61,7 +61,7 @@ import static org.junit.Assert.assertEquals;
                     " \"type\": \"Organization\"," +
                     " \"attributes\": " +
                     "{" +
-                    " \"name\": \"Organization9\"" +
+                    " \"name\": \"Organization14\"" +
                     "}" +
                     "}" +
                     "}";
@@ -89,27 +89,7 @@ import static org.junit.Assert.assertEquals;
     }
 }
 
-    @Given("^An organization is deleted$")
-
-    public void deleteOrganization() throws Throwable {
-
-        HttpClient httpClientDeleteOrganization = HttpClients.createDefault();
-        try {
-            URIBuilder builderDeleteOrganization = new URIBuilder(config.getUrl() + "/organizations/" + strOrganizationId.trim());
-            URI uriDeleteOrganization = builderDeleteOrganization.build();
-            HttpDelete requestDeleteOrganization = new HttpDelete(uriDeleteOrganization);
-            requestDeleteOrganization.setHeader("Content-Type", "application/vnd.api+json");
-            HttpResponse resDeleteOrganization = httpClientDeleteOrganization.execute(requestDeleteOrganization);
-
-            Assert.assertEquals(204, resDeleteOrganization.getStatusLine().getStatusCode());
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-    }
-
-        @Given("A category is created")
+        @Given("The Customer creates a category")
         public void createCategory() {
 
             HttpClient httpClientCreateCategory = HttpClients.createDefault();
@@ -167,7 +147,63 @@ import static org.junit.Assert.assertEquals;
             }
         }
 
-        @Given("^A category is deleted$")
+        @Given("The Customer views a category")
+        public void viewCategory() {
+
+              HttpClient httpClientViewCategory = HttpClients.createDefault();
+              try {
+                URIBuilder builderViewCategory = new URIBuilder(config.getUrl() + "/categories");
+                URI uriViewCategory = builderViewCategory.build();
+                //builderViewCategory.setParameter("criteria", "name =~ /^a/i OR email == \"matt.ahmad@groupbyinc.com\"");
+                HttpGet requestViewCategory = new HttpGet(uriViewCategory);
+                requestViewCategory.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resViewCategory = httpClientViewCategory.execute(requestViewCategory);
+
+                Assert.assertEquals(200, resViewCategory.getStatusLine().getStatusCode());
+
+                String strResponseCategory = resViewCategory.toString();
+                System.out.println("View Category Response is: " + strResponseCategory);
+
+             } catch (Exception e) {
+                System.out.println(e.getMessage());
+             }
+        }
+
+
+//
+//    try {
+//      URIBuilder builderRetrieveMultipleEnrichUsers = new URIBuilder(strEnrichBaseUrl + "/users");
+//      URI uriRetrieveMultipleEnrichUsers = builderRetrieveMultipleEnrichUsers.build();
+//      builderRetrieveMultipleEnrichUsers.setParameter("criteria", "name =~ /^a/i OR email == \"matt.ahmad@groupbyinc.com\"");
+//      HttpGet requestRetrieveMultipleEnrichUsers = new HttpGet(uriRetrieveMultipleEnrichUsers);
+//      requestRetrieveMultipleEnrichUsers.setHeader("Content-Type", "application/vnd.api+json");
+//      HttpResponse resRetrieveMultipleEnrichUsers = httpClientRetrieveMultipleEnrichUsers.execute(requestRetrieveMultipleEnrichUsers);
+//
+//      Assert.assertEquals(200, resRetrieveMultipleEnrichUsers.getStatusLine().getStatusCode());
+//    }
+//    catch (Exception e)
+//    {
+//      System.out.println(e.getMessage());
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @Given("^The Customer deletes the category$")
 
         public void deleteCategory() throws Throwable {
 
@@ -180,6 +216,26 @@ import static org.junit.Assert.assertEquals;
                 HttpResponse resDeleteCategory = httpClientDeleteCategory.execute(requestDeleteCategory);
 
                 Assert.assertEquals(204, resDeleteCategory.getStatusLine().getStatusCode());
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        @Given("^The Customer deletes the organization$")
+
+        public void deleteOrganization() throws Throwable {
+
+            HttpClient httpClientDeleteOrganization = HttpClients.createDefault();
+            try {
+                URIBuilder builderDeleteOrganization = new URIBuilder(config.getUrl() + "/organizations/" + strOrganizationId.trim());
+                URI uriDeleteOrganization = builderDeleteOrganization.build();
+                HttpDelete requestDeleteOrganization = new HttpDelete(uriDeleteOrganization);
+                requestDeleteOrganization.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resDeleteOrganization = httpClientDeleteOrganization.execute(requestDeleteOrganization);
+
+                Assert.assertEquals(204, resDeleteOrganization.getStatusLine().getStatusCode());
             }
             catch (Exception e)
             {

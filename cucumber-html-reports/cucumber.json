@@ -11,11 +11,11 @@
         "steps": [
           {
             "result": {
-              "duration": 596000000,
+              "duration": 687000000,
               "status": "passed"
             },
             "line": 4,
-            "name": "An organization is created",
+            "name": "The Customer creates an organization",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
             },
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2020-05-30T17:56:57.509Z",
+        "start_timestamp": "2020-05-30T19:01:28.813Z",
         "line": 7,
         "name": "Create an Enrich Category",
         "description": "",
@@ -34,11 +34,11 @@
         "steps": [
           {
             "result": {
-              "duration": 176000000,
+              "duration": 158000000,
               "status": "passed"
             },
             "line": 8,
-            "name": "A category is created",
+            "name": "The Customer creates a category",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createCategory()"
             },
@@ -46,11 +46,23 @@
           },
           {
             "result": {
-              "duration": 147000000,
+              "duration": 157000000,
               "status": "passed"
             },
             "line": 9,
-            "name": "A category is deleted",
+            "name": "The Customer views a category",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 146000000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "The Customer deletes the category",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()"
             },
@@ -58,11 +70,11 @@
           },
           {
             "result": {
-              "duration": 143000000,
+              "duration": 153000000,
               "status": "passed"
             },
-            "line": 10,
-            "name": "An organization is deleted",
+            "line": 11,
+            "name": "The Customer deletes the organization",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteOrganization()"
             },
