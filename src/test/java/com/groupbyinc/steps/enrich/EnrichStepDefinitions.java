@@ -170,26 +170,74 @@ import static org.junit.Assert.assertEquals;
         }
 
 
+
+        @Given("The Customer modifies a category")
+        public void modifyCategory() {
+
+            HttpClient httpClientModifyCategory = HttpClients.createDefault();
+            try {
+                URIBuilder builderModifyCategory = new URIBuilder(config.getUrl() + "/categories");
+                URI uriModifyCategory = builderModifyCategory.build();
+                HttpPatch requestModifyCategory = new HttpPatch(uriModifyCategory);
+                requestModifyCategory.setHeader("Content-Type", "application/vnd.api+json");
+
+                String payloadModifyCategory = "{" +
+                        " \"data\": " +
+                        "{" +
+                        " \"id\": \"" + strOrganizationId + "\"" +
+                        " \"type\": \"Category\"," +
+                        " \"attributes\": " +
+                        "{" +
+                        " \"title\": \"Guidance System\"" +
+                        "}" +
+                        "}" +
+                        "}";
+        StringEntity entityModifyCategory = new StringEntity(payloadModifyCategory);
+                requestModifyCategory.setEntity(entityModifyCategory);
+        HttpResponse resModifyCategory = httpClientModifyCategory.execute(requestModifyCategory);
+
+                Assert.assertEquals(201, resModifyCategory.getStatusLine().getStatusCode());
+
+        String strResponseCategory = EntityUtils.toString(resModifyCategory.getEntity());
+                System.out.println("Modify Category Response is: " + strResponseCategory);
+        }
+     catch (Exception e) {
+        System.out.println(e.getMessage());
+        }
+        }
+
+
+
+
+//      HttpClient httpClientEditEnrichUserEmail = HttpClients.createDefault();
+//      try {
+//        URIBuilder builderEditEnrichUserEmail = new URIBuilder(strEnrichBaseUrl + "/users");
+//        URI uriEditEnrichUserEmail = builderEditEnrichUserEmail.build();
+//        HttpPatch requestEditEnrichUserEmail = new HttpPatch(uriEditEnrichUserEmail);
+//        requestEditEnrichUserEmail.setHeader("Content-Type", "application/vnd.api+json");
 //
-//    try {
-//      URIBuilder builderRetrieveMultipleEnrichUsers = new URIBuilder(strEnrichBaseUrl + "/users");
-//      URI uriRetrieveMultipleEnrichUsers = builderRetrieveMultipleEnrichUsers.build();
-//      builderRetrieveMultipleEnrichUsers.setParameter("criteria", "name =~ /^a/i OR email == \"matt.ahmad@groupbyinc.com\"");
-//      HttpGet requestRetrieveMultipleEnrichUsers = new HttpGet(uriRetrieveMultipleEnrichUsers);
-//      requestRetrieveMultipleEnrichUsers.setHeader("Content-Type", "application/vnd.api+json");
-//      HttpResponse resRetrieveMultipleEnrichUsers = httpClientRetrieveMultipleEnrichUsers.execute(requestRetrieveMultipleEnrichUsers);
+//        String payloadEditEnrichUserEmail = "{" +
+//                " \"data\": " +
+//                "{" +
+//                " \"type\": \"User\"," +
+//                " \"id\": \"" + strEnrichUserId + "\"," +
+//                " \"attributes\": " +
+//                "{" +
+//                " \"email\": \"matt.ahmad@groupbyinc.com\"" +
+//                "} " +
+//                "} " +
+//                "}";
 //
-//      Assert.assertEquals(200, resRetrieveMultipleEnrichUsers.getStatusLine().getStatusCode());
-//    }
-//    catch (Exception e)
-//    {
-//      System.out.println(e.getMessage());
-//    }
-
-
-
-
-
+//        StringEntity entityEditEnrichUserEmail = new StringEntity(payloadEditEnrichUserEmail);
+//        requestEditEnrichUserEmail.setEntity(entityEditEnrichUserEmail);
+//        HttpResponse resEditEnrichUserEmail = httpClientEditEnrichUserEmail.execute(requestEditEnrichUserEmail);
+//
+//        Assert.assertEquals(200, resEditEnrichUserEmail.getStatusLine().getStatusCode());
+//      }
+//      catch (Exception e)
+//      {
+//        System.out.println(e.getMessage());
+//      }
 
 
 

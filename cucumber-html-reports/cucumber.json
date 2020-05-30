@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 687000000,
+              "duration": 576000000,
               "status": "passed"
             },
             "line": 4,
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2020-05-30T19:01:28.813Z",
+        "start_timestamp": "2020-05-30T20:02:41.701Z",
         "line": 7,
         "name": "Create an Enrich Category",
         "description": "",
@@ -34,7 +34,7 @@
         "steps": [
           {
             "result": {
-              "duration": 158000000,
+              "duration": 180000000,
               "status": "passed"
             },
             "line": 8,
@@ -46,7 +46,7 @@
           },
           {
             "result": {
-              "duration": 157000000,
+              "duration": 156000000,
               "status": "passed"
             },
             "line": 9,
@@ -58,7 +58,7 @@
           },
           {
             "result": {
-              "duration": 146000000,
+              "duration": 148000000,
               "status": "passed"
             },
             "line": 10,
@@ -70,7 +70,7 @@
           },
           {
             "result": {
-              "duration": 153000000,
+              "duration": 147000000,
               "status": "passed"
             },
             "line": 11,
