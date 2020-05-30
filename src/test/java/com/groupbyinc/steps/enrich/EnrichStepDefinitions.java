@@ -31,6 +31,20 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
@@ -44,24 +58,28 @@ import static org.junit.Assert.assertEquals;
         @Autowired
         private EnrichResults searchResults;
         private String strOrganizationId, strCategoryId, resViewCategory;
+        private String strOrganizationToDelete, strCategoryToDelete;
+        private static boolean areaCreated = false;
 
         @Given("The Customer creates an organization")
-        public void createOrganization() {
+        public void createOrganization() throws Throwable {
 
-        HttpClient httpClientCreateOrganization = HttpClients.createDefault();
-        try {
-            URIBuilder builderCreateOrganization = new URIBuilder(config.getUrl() + "/organizations");
-            URI uriCreateOrganization = builderCreateOrganization.build();
-            HttpPost requestCreateOrganization = new HttpPost(uriCreateOrganization);
-            requestCreateOrganization.setHeader("Content-Type", "application/vnd.api+json");
+        if (!areaCreated) {
 
-            String payloadCreateOrganization = "{" +
+            HttpClient httpClientCreateOrganization = HttpClients.createDefault();
+            try {
+                URIBuilder builderCreateOrganization = new URIBuilder(config.getUrl() + "/organizations");
+                URI uriCreateOrganization = builderCreateOrganization.build();
+                HttpPost requestCreateOrganization = new HttpPost(uriCreateOrganization);
+                requestCreateOrganization.setHeader("Content-Type", "application/vnd.api+json");
+
+                String payloadCreateOrganization = "{" +
                     " \"data\": " +
                     "{" +
                     " \"type\": \"Organization\"," +
                     " \"attributes\": " +
                     "{" +
-                    " \"name\": \"Organization14\"" +
+                    " \"name\": \"Organization27\"" +
                     "}" +
                     "}" +
                     "}";
@@ -79,15 +97,23 @@ import static org.junit.Assert.assertEquals;
             JSONArray jsonArrData = new JSONArray();
             jsonArrData.put(jsonObjData);
 
-        for (int i = 0; i < jsonArrData.length(); i++) {
-            JSONObject jsonObjId = jsonArrData.getJSONObject(0);
-            strOrganizationId = jsonObjId.getString("id");
-            System.out.println(strOrganizationId);
+            for (int i = 0; i < jsonArrData.length(); i++) {
+                JSONObject jsonObjId = jsonArrData.getJSONObject(0);
+                strOrganizationId = jsonObjId.getString("id");
+                System.out.println(strOrganizationId);
+            }
+            String pathOrganization = this.getClass().getResource("/organization.txt").getFile();
+            FileWriter writerOrganization = new FileWriter(pathOrganization, false);
+            BufferedWriter bufferedWriterOrganization = new BufferedWriter(writerOrganization);
+            bufferedWriterOrganization.write(strOrganizationId);
+            bufferedWriterOrganization.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            areaCreated = true;
         }
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-    }
-}
+      }
+
 
         @Given("The Customer creates a category")
         public void createCategory() {
@@ -142,34 +168,38 @@ import static org.junit.Assert.assertEquals;
                     strCategoryId = jsonObjId.getString("id");
                     System.out.println(strCategoryId);
                 }
+                String pathCategory = this.getClass().getResource("/category.txt").getFile();
+                FileWriter writerCategory = new FileWriter(pathCategory, false);
+                BufferedWriter bufferedWriterCategory = new BufferedWriter(writerCategory);
+                bufferedWriterCategory.write(strCategoryId);
+                bufferedWriterCategory.close();
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        }
+    }
 
-        @Given("The Customer views a category")
+    @Given("The Customer lists categories")
         public void viewCategory() {
 
-              HttpClient httpClientViewCategory = HttpClients.createDefault();
+              HttpClient httpClientListCategories = HttpClients.createDefault();
               try {
-                URIBuilder builderViewCategory = new URIBuilder(config.getUrl() + "/categories");
-                URI uriViewCategory = builderViewCategory.build();
-                //builderViewCategory.setParameter("criteria", "name =~ /^a/i OR email == \"matt.ahmad@groupbyinc.com\"");
-                HttpGet requestViewCategory = new HttpGet(uriViewCategory);
-                requestViewCategory.setHeader("Content-Type", "application/vnd.api+json");
-                HttpResponse resViewCategory = httpClientViewCategory.execute(requestViewCategory);
+                URIBuilder builderListCategories = new URIBuilder(config.getUrl() + "/categories");
+                URI uriListCategories = builderListCategories.build();
+                //builderListCategories.setParameter("criteria", "name =~ /^a/i OR email == \"first.last@groupbyinc.com\"");
+                HttpGet requestListCategories = new HttpGet(uriListCategories);
+                requestListCategories.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resListCategories = httpClientListCategories.execute(requestListCategories);
 
-                Assert.assertEquals(200, resViewCategory.getStatusLine().getStatusCode());
+                Assert.assertEquals(200, resListCategories.getStatusLine().getStatusCode());
 
-                String strResponseCategory = resViewCategory.toString();
-                System.out.println("View Category Response is: " + strResponseCategory);
+                String strResponseCategory = resListCategories.toString();
+                System.out.println("List Categories Response is: " + strResponseCategory);
 
              } catch (Exception e) {
                 System.out.println(e.getMessage());
              }
         }
-
-
 
         @Given("The Customer modifies a category")
         public void modifyCategory() {
@@ -201,110 +231,72 @@ import static org.junit.Assert.assertEquals;
         String strResponseCategory = EntityUtils.toString(resModifyCategory.getEntity());
                 System.out.println("Modify Category Response is: " + strResponseCategory);
         }
-     catch (Exception e) {
-        System.out.println(e.getMessage());
+            catch (Exception e) {
+            System.out.println(e.getMessage());
+            }
         }
-        }
 
-
-
-
-//      HttpClient httpClientEditEnrichUserEmail = HttpClients.createDefault();
-//      try {
-//        URIBuilder builderEditEnrichUserEmail = new URIBuilder(strEnrichBaseUrl + "/users");
-//        URI uriEditEnrichUserEmail = builderEditEnrichUserEmail.build();
-//        HttpPatch requestEditEnrichUserEmail = new HttpPatch(uriEditEnrichUserEmail);
-//        requestEditEnrichUserEmail.setHeader("Content-Type", "application/vnd.api+json");
-//
-//        String payloadEditEnrichUserEmail = "{" +
-//                " \"data\": " +
-//                "{" +
-//                " \"type\": \"User\"," +
-//                " \"id\": \"" + strEnrichUserId + "\"," +
-//                " \"attributes\": " +
-//                "{" +
-//                " \"email\": \"matt.ahmad@groupbyinc.com\"" +
-//                "} " +
-//                "} " +
-//                "}";
-//
-//        StringEntity entityEditEnrichUserEmail = new StringEntity(payloadEditEnrichUserEmail);
-//        requestEditEnrichUserEmail.setEntity(entityEditEnrichUserEmail);
-//        HttpResponse resEditEnrichUserEmail = httpClientEditEnrichUserEmail.execute(requestEditEnrichUserEmail);
-//
-//        Assert.assertEquals(200, resEditEnrichUserEmail.getStatusLine().getStatusCode());
-//      }
-//      catch (Exception e)
-//      {
-//        System.out.println(e.getMessage());
-//      }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        @Given("^The Customer deletes the category$")
-
+        @Given("The Customer deletes the category")
         public void deleteCategory() throws Throwable {
+
+            String strCurrentLine;
+            InputStream inputStream = getClass().getResourceAsStream("/category.txt");
+
+            StringBuilder resultStringBuilder = new StringBuilder();
+
+            try (BufferedReader brCategoryToDelete
+                         = new BufferedReader(new InputStreamReader(inputStream))) {
+                while ((strCurrentLine = brCategoryToDelete.readLine()) != null) {
+                    strCategoryToDelete = strCurrentLine.trim();
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             HttpClient httpClientDeleteCategory = HttpClients.createDefault();
             try {
-                URIBuilder builderDeleteCategory = new URIBuilder(config.getUrl() + "/categories/" + strCategoryId.trim());
+                URIBuilder builderDeleteCategory = new URIBuilder(config.getUrl() + "/categories/" + strCategoryToDelete);
                 URI uriDeleteCategory = builderDeleteCategory.build();
                 HttpDelete requestDeleteCategory = new HttpDelete(uriDeleteCategory);
                 requestDeleteCategory.setHeader("Content-Type", "application/vnd.api+json");
                 HttpResponse resDeleteCategory = httpClientDeleteCategory.execute(requestDeleteCategory);
 
                 Assert.assertEquals(204, resDeleteCategory.getStatusLine().getStatusCode());
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
 
-        @Given("^The Customer deletes the organization$")
-
+        @Given("The Customer deletes the organization")
         public void deleteOrganization() throws Throwable {
+
+            String strCurrentLine;
+            InputStream inputStream = getClass().getResourceAsStream("/organization.txt");
+
+            StringBuilder resultStringBuilder = new StringBuilder();
+
+            try (BufferedReader brOrganizationToDelete
+                         = new BufferedReader(new InputStreamReader(inputStream))) {
+                while ((strCurrentLine = brOrganizationToDelete.readLine()) != null) {
+                    strOrganizationToDelete = strCurrentLine.trim();
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             HttpClient httpClientDeleteOrganization = HttpClients.createDefault();
             try {
-                URIBuilder builderDeleteOrganization = new URIBuilder(config.getUrl() + "/organizations/" + strOrganizationId.trim());
+                URIBuilder builderDeleteOrganization = new URIBuilder(config.getUrl() + "/organizations/" + strOrganizationToDelete);
                 URI uriDeleteOrganization = builderDeleteOrganization.build();
                 HttpDelete requestDeleteOrganization = new HttpDelete(uriDeleteOrganization);
                 requestDeleteOrganization.setHeader("Content-Type", "application/vnd.api+json");
                 HttpResponse resDeleteOrganization = httpClientDeleteOrganization.execute(requestDeleteOrganization);
 
                 Assert.assertEquals(204, resDeleteOrganization.getStatusLine().getStatusCode());
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-
-//    @Then("Expect a record count of {int}")
-//    public void assertResultRecordCount(int recordCount) {
-//        assertEquals(searchResults.getRecordSize(), recordCount);
-//    }
-//
-//    @Then("Expect Product Ids to return in order of relevancy:")
-//    public void assertOrderedResults(List<String> productIds) {
-//
-//        List<String> expectedOrderedProductIds = searchResults.getAllMetaList()
-//                .stream()
-//                .map(record -> record.get("id").toString())
-//                .collect(Collectors.toList());
-//
-//        assertEquals(expectedOrderedProductIds, productIds);
-//    }
-
 }

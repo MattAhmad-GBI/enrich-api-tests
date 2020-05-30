@@ -34,9 +34,29 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "Create Enrich test fixtures",
+  "description": "",
+  "keyword": "Background"
+});
 formatter.step({
-  "name": "The Customer views a category",
-  "keyword": "And "
+  "name": "The Customer creates an organization",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "List Enrich Categories",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "The Customer lists categories",
+  "keyword": "Given "
 });
 formatter.match({
   "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()"
@@ -44,9 +64,29 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "Create Enrich test fixtures",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "The Customer creates an organization",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Delete Enrich Category",
+  "description": "",
+  "keyword": "Scenario"
+});
 formatter.step({
   "name": "The Customer deletes the category",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()"
@@ -54,9 +94,29 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.background({
+  "name": "Create Enrich test fixtures",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "The Customer creates an organization",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Delete Enrich Organization",
+  "description": "",
+  "keyword": "Scenario"
+});
 formatter.step({
   "name": "The Customer deletes the organization",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteOrganization()"

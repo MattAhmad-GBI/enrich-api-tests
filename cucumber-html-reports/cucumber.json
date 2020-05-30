@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 576000000,
+              "duration": 611000000,
               "status": "passed"
             },
             "line": 4,
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2020-05-30T20:02:41.701Z",
+        "start_timestamp": "2020-05-30T23:11:31.038Z",
         "line": 7,
         "name": "Create an Enrich Category",
         "description": "",
@@ -34,7 +34,7 @@
         "steps": [
           {
             "result": {
-              "duration": 180000000,
+              "duration": 160000000,
               "status": "passed"
             },
             "line": 8,
@@ -43,42 +43,138 @@
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createCategory()"
             },
             "keyword": "Given "
-          },
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "Create Enrich test fixtures",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
           {
             "result": {
-              "duration": 156000000,
+              "duration": 1000000,
               "status": "passed"
             },
-            "line": 9,
-            "name": "The Customer views a category",
+            "line": 4,
+            "name": "The Customer creates an organization",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-05-30T23:11:31.859Z",
+        "line": 10,
+        "name": "List Enrich Categories",
+        "description": "",
+        "id": "category;list-enrich-categories",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 153000000,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "The Customer lists categories",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()"
             },
-            "keyword": "And "
-          },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "Create Enrich test fixtures",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
           {
             "result": {
-              "duration": 148000000,
+              "duration": 1000000,
               "status": "passed"
             },
-            "line": 10,
+            "line": 4,
+            "name": "The Customer creates an organization",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-05-30T23:11:32.022Z",
+        "line": 13,
+        "name": "Delete Enrich Category",
+        "description": "",
+        "id": "category;delete-enrich-category",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 158000000,
+              "status": "passed"
+            },
+            "line": 14,
             "name": "The Customer deletes the category",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()"
             },
-            "keyword": "And "
-          },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 3,
+        "name": "Create Enrich test fixtures",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
           {
             "result": {
-              "duration": 147000000,
+              "duration": 1000000,
               "status": "passed"
             },
-            "line": 11,
+            "line": 4,
+            "name": "The Customer creates an organization",
+            "match": {
+              "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-05-30T23:11:32.192Z",
+        "line": 16,
+        "name": "Delete Enrich Organization",
+        "description": "",
+        "id": "category;delete-enrich-organization",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 152000000,
+              "status": "passed"
+            },
+            "line": 17,
             "name": "The Customer deletes the organization",
             "match": {
               "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteOrganization()"
             },
-            "keyword": "And "
+            "keyword": "Given "
           }
         ]
       }

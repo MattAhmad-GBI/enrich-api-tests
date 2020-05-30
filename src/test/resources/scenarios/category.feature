@@ -6,6 +6,12 @@ Feature: Category
 
           Scenario: Create an Enrich Category
             Given The Customer creates a category
-            And The Customer views a category
-            And The Customer deletes the category
-            And The Customer deletes the organization
+
+          Scenario: List Enrich Categories
+            Given The Customer lists categories
+
+          Scenario: Delete Enrich Category
+            Given The Customer deletes the category
+
+          Scenario: Delete Enrich Organization
+            Given The Customer deletes the organization
