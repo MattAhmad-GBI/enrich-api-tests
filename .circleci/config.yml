@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    working_directory:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run:
+          command:
+            ./gradlew cleanTest test --debug

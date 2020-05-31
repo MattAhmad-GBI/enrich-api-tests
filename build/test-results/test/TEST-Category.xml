@@ -1,68 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Category" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-05-30T23:11:15" hostname="GroupByIncs-MacBook-Pro.local" time="17.136">
+<testsuite name="Category" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-05-31T01:32:28" hostname="GroupByIncs-MacBook-Pro.local" time="0.534">
   <properties/>
-  <testcase name="Create an Enrich Category" classname="Category" time="16.643"/>
-  <testcase name="List Enrich Categories" classname="Category" time="0.162"/>
-  <testcase name="Delete Enrich Category" classname="Category" time="0.169"/>
-  <testcase name="Delete Enrich Organization" classname="Category" time="0.162"/>
-  <system-out><![CDATA[19:11:15.309 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-19:11:15.322 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-19:11:15.339 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-19:11:15.348 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions], using SpringBootContextLoader
-19:11:15.351 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: class path resource [com/groupbyinc/steps/authentication/AuthenticationServiceStepDefinitions-context.xml] does not exist
-19:11:15.352 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: class path resource [com/groupbyinc/steps/authentication/AuthenticationServiceStepDefinitionsContext.groovy] does not exist
-19:11:15.352 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: no resource found for suffixes {-context.xml, Context.groovy}.
-19:11:15.383 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]
-19:11:15.471 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: using defaults.
-19:11:15.472 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-19:11:15.480 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
-19:11:15.480 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
-19:11:15.481 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@29b4a764, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@16f578aa, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@68799a81, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5a9aa745, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5619b4f5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6b14b6b4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4f1d94c5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@40b2b2ec, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5b171813, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@15f8a4d3]
-19:11:15.501 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+  <testcase name="Create an Enrich Organization" classname="Category" time="0.481"/>
+  <testcase name="List Enrich Organizations" classname="Category" time="0.006"/>
+  <testcase name="Modify an Enrich Organization" classname="Category" time="0.006"/>
+  <testcase name="View an Enrich Organization" classname="Category" time="0.006"/>
+  <testcase name="Create an Enrich Category" classname="Category" time="0.011"/>
+  <testcase name="List Enrich Categories" classname="Category" time="0.006"/>
+  <testcase name="Modify an Enrich Category" classname="Category" time="0.005"/>
+  <testcase name="View an Enrich Category" classname="Category" time="0.004"/>
+  <testcase name="Delete Enrich Category" classname="Category" time="0.005"/>
+  <testcase name="Delete Enrich Organization" classname="Category" time="0.003"/>
+  <system-out><![CDATA[21:32:28.881 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@6205239b
 
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.1.4.RELEASE)
-
-2020-05-30 19:11:30.674  INFO 8764 --- [    Test worker] s.a.AuthenticationServiceStepDefinitions : Starting AuthenticationServiceStepDefinitions on GroupByIncs-MacBook-Pro.local with PID 8764 (started by mattahmad in /Users/mattahmad/Documents/enrich-api-tests)
-2020-05-30 19:11:30.676  INFO 8764 --- [    Test worker] s.a.AuthenticationServiceStepDefinitions : No active profile set, falling back to default profiles: default
-2020-05-30 19:11:31.016  INFO 8764 --- [    Test worker] s.a.AuthenticationServiceStepDefinitions : Started AuthenticationServiceStepDefinitions in 15.507 seconds (JVM running for 16.49)
-
-Scenario: Create an Enrich Category          ?[90m# src/test/resources/scenarios/category.feature:7?[0m
-Create Organization Response is: {"data":{"id":"a48c8933-db3b-45ef-8928-1f6227bf3873","type":"Organization","attributes":{"createdAt":"2020-05-30T23:11:31.618Z","updatedAt":"2020-05-30T23:11:31.618Z","name":"Organization27"}}}
-a48c8933-db3b-45ef-8928-1f6227bf3873
+Scenario: Create an Enrich Organization      ?[90m# src/test/resources/scenarios/category.feature:7?[0m
+null
   ?[32mGiven ?[0m?[32mThe Customer creates an organization?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()?[0m
-Create Category Response is: {"data":{"id":"b179c7c2-f4aa-419d-8703-e2e7539e46e7","type":"Category","attributes":{"createdAt":"2020-05-30T23:11:31.810Z","updatedAt":"2020-05-30T23:11:31.810Z","proprietaryId":"rxmt5NJf","title":"Propellant"},"relationships":{"parent":{"data":null},"organization":{"data":{"type":"Organization","id":"a48c8933-db3b-45ef-8928-1f6227bf3873"}}}}}
-b179c7c2-f4aa-419d-8703-e2e7539e46e7
-  ?[32mGiven ?[0m?[32mThe Customer creates a category?[0m      ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.createCategory()?[0m
-2020-05-30 19:11:31.854  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions], using SpringBootContextLoader
-2020-05-30 19:11:31.854  INFO 8764 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-05-30 19:11:31.857  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2020-05-30 19:11:31.857  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@31e7cbdb, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7e2d3457, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@151d8e88, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6b3f3819, org.springframework.test.context.support.DirtiesContextTestExecutionListener@64898fb6, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@731190fc, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@a0129d8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@18ec3771, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@30b0efe5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4f590f7f]
+21:32:29.234 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@2a6b6318
 
-Scenario: List Enrich Categories             ?[90m# src/test/resources/scenarios/category.feature:10?[0m
-  ?[32mGiven ?[0m?[32mThe Customer creates an organization?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()?[0m
-List Categories Response is: HttpResponseProxy{HTTP/1.1 200 OK [x-powered-by: Express, vary: Origin, content-type: application/vnd.api+json, Date: Sat, 30 May 2020 23:11:31 GMT, Server: Google Frontend, Content-Length: 6770, Alt-Svc: h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-T050=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"] ResponseEntityProxy{[Content-Type: application/vnd.api+json,Content-Length: 6770,Chunked: false]}}
-  ?[32mGiven ?[0m?[32mThe Customer lists categories?[0m        ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()?[0m
-2020-05-30 19:11:32.017  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions], using SpringBootContextLoader
-2020-05-30 19:11:32.017  INFO 8764 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-05-30 19:11:32.020  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2020-05-30 19:11:32.021  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@788c469e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6d2da8a7, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2d840c2e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2b6a13bf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@31c808fa, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@31a0e6f4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3cc86992, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@47c4725f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@36ba3d85, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@9beae0]
+Scenario: List Enrich Organizations      ?[90m# src/test/resources/scenarios/category.feature:10?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer lists organizations?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.listOrganizations()?[0m
+21:32:29.240 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@17a4de4b
 
-Scenario: Delete Enrich Category             ?[90m# src/test/resources/scenarios/category.feature:13?[0m
-  ?[32mGiven ?[0m?[32mThe Customer creates an organization?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()?[0m
-  ?[32mGiven ?[0m?[32mThe Customer deletes the category?[0m    ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()?[0m
-2020-05-30 19:11:32.186  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions], using SpringBootContextLoader
-2020-05-30 19:11:32.187  INFO 8764 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.groupbyinc.steps.authentication.AuthenticationServiceStepDefinitions]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-05-30 19:11:32.189  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2020-05-30 19:11:32.191  INFO 8764 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3f799c75, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1076b34b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3a712d56, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@26206537, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5549dfb2, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7080d2bb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@43a85a60, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@660486ff, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7dab61c2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@bc861c6]
+Scenario: Modify an Enrich Organization       ?[90m# src/test/resources/scenarios/category.feature:13?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer modifies an organization?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.modifyOrganization()?[0m
+21:32:29.246 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@4ecdd751
 
-Scenario: Delete Enrich Organization          ?[90m# src/test/resources/scenarios/category.feature:16?[0m
-  ?[32mGiven ?[0m?[32mThe Customer creates an organization?[0m  ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()?[0m
+Scenario: View an Enrich Organization      ?[90m# src/test/resources/scenarios/category.feature:16?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer views an organization?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewOrganization()?[0m
+21:32:29.253 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@e985bf
+
+Scenario: Create an Enrich Category     ?[90m# src/test/resources/scenarios/category.feature:19?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer creates a category?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.createCategory()?[0m
+21:32:29.263 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@3a888119
+
+Scenario: List Enrich Categories      ?[90m# src/test/resources/scenarios/category.feature:22?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer lists categories?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.listCategories()?[0m
+21:32:29.270 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@199ced61
+
+Scenario: Modify an Enrich Category      ?[90m# src/test/resources/scenarios/category.feature:25?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer modifies a category?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.modifyCategory()?[0m
+21:32:29.274 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@1343ae4e
+
+Scenario: View an Enrich Category     ?[90m# src/test/resources/scenarios/category.feature:28?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer views a category?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()?[0m
+21:32:29.278 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@7776be1d
+
+Scenario: Delete Enrich Category          ?[90m# src/test/resources/scenarios/category.feature:31?[0m
+null
+  ?[32mGiven ?[0m?[32mThe Customer deletes the category?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()?[0m
+21:32:29.283 [Test worker] DEBUG org.springframework.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@3f457251
+
+Scenario: Delete Enrich Organization          ?[90m# src/test/resources/scenarios/category.feature:34?[0m
+null
   ?[32mGiven ?[0m?[32mThe Customer deletes the organization?[0m ?[90m# com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteOrganization()?[0m
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

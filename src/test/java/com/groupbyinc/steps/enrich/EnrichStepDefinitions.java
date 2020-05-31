@@ -45,7 +45,9 @@ import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+import static org.hamcrest.CoreMatchers.containsString;
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertEquals;
 
     public class EnrichStepDefinitions {
@@ -57,14 +59,14 @@ import static org.junit.Assert.assertEquals;
 
         @Autowired
         private EnrichResults searchResults;
-        private String strOrganizationId, strCategoryId, resViewCategory;
+        private String strOrganizationId, strCategoryId, strResponseString;
         private String strOrganizationToDelete, strCategoryToDelete;
-        private static boolean areaCreated = false;
+        private static boolean organizationCreated = false;
 
         @Given("The Customer creates an organization")
         public void createOrganization() throws Throwable {
 
-        if (!areaCreated) {
+        //if (!organizationCreated) {
 
             HttpClient httpClientCreateOrganization = HttpClients.createDefault();
             try {
@@ -79,7 +81,7 @@ import static org.junit.Assert.assertEquals;
                     " \"type\": \"Organization\"," +
                     " \"attributes\": " +
                     "{" +
-                    " \"name\": \"Organization27\"" +
+                    " \"name\": \"Organization30\"" +
                     "}" +
                     "}" +
                     "}";
@@ -107,16 +109,99 @@ import static org.junit.Assert.assertEquals;
             BufferedWriter bufferedWriterOrganization = new BufferedWriter(writerOrganization);
             bufferedWriterOrganization.write(strOrganizationId);
             bufferedWriterOrganization.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-            areaCreated = true;
         }
-      }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            organizationCreated = true;
+//        }
+//      }
+
+        @Given("The Customer lists organizations")
+        public void listOrganizations() throws Throwable {
+
+            HttpClient httpClientListOrganizations = HttpClients.createDefault();
+            try {
+                URIBuilder builderListOrganizations = new URIBuilder(config.getUrl() + "/organizations");
+                URI uriListOrganizations = builderListOrganizations.build();
+                //builderListCategories.setParameter("criteria", "name =~ /^a/i OR email == \"first.last@groupbyinc.com\"");
+                HttpGet requestListOrganizations = new HttpGet(uriListOrganizations);
+                requestListOrganizations.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resListOrganizations = httpClientListOrganizations.execute(requestListOrganizations);
+
+                Assert.assertEquals(200, resListOrganizations.getStatusLine().getStatusCode());
+
+                String strResponseOrganizations = resListOrganizations.toString();
+                System.out.println("List Organizations Response is: " + strResponseOrganizations);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        @Given("The Customer modifies an organization")
+        public void modifyOrganization() throws Throwable {
+
+            HttpClient httpClientModifyOrganization = HttpClients.createDefault();
+            try {
+                URIBuilder builderModifyOrganization = new URIBuilder(config.getUrl() + "/organizations");
+                URI uriModifyOrganization = builderModifyOrganization.build();
+                HttpPatch requestModifyOrganization = new HttpPatch(uriModifyOrganization);
+                requestModifyOrganization.setHeader("Content-Type", "application/vnd.api+json");
+
+                String payloadModifyOrganization = "{" +
+                        " \"data\": " +
+                        "{" +
+                        " \"id\": \"" + strOrganizationId + "\"," +
+                        " \"type\": \"Organization\"," +
+                        " \"attributes\": " +
+                        "{" +
+                        " \"name\": \"Acme Inc.\"" +
+                        "}" +
+                        "}" +
+                        "}";
+                StringEntity entityModifyOrganization = new StringEntity(payloadModifyOrganization);
+                requestModifyOrganization.setEntity(entityModifyOrganization);
+                HttpResponse resModifyOrganization = httpClientModifyOrganization.execute(requestModifyOrganization);
+
+                Assert.assertEquals(200, resModifyOrganization.getStatusLine().getStatusCode());
+
+                String strResponseOrganization = EntityUtils.toString(resModifyOrganization.getEntity());
+                System.out.println("Modify Organization Response is: " + strResponseOrganization);
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        @Given("The Customer views an organization")
+        public void viewOrganization() throws Throwable {
+
+            HttpClient httpClientViewOrganization = HttpClients.createDefault();
+            try {
+                URIBuilder builderViewOrganization = new URIBuilder(config.getUrl() + "/organizations/" + strOrganizationId);
+                URI uriViewOrganization = builderViewOrganization.build();
+                //builderViewOrganization.setParameter("criteria", "name =~ /^a/i OR email == \"first.last@groupbyinc.com\"");
+                HttpGet requestViewOrganization = new HttpGet(uriViewOrganization);
+                requestViewOrganization.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resViewOrganization = httpClientViewOrganization.execute(requestViewOrganization);
+
+                Assert.assertEquals(200, resViewOrganization.getStatusLine().getStatusCode());
+
+                String strResponseOrganization = resViewOrganization.toString();
+                System.out.println("View Organization Response is: " + strResponseOrganization);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
 
         @Given("The Customer creates a category")
-        public void createCategory() {
+        public void createCategory() throws Throwable {
 
             HttpClient httpClientCreateCategory = HttpClients.createDefault();
             try {
@@ -180,7 +265,7 @@ import static org.junit.Assert.assertEquals;
     }
 
     @Given("The Customer lists categories")
-        public void viewCategory() {
+        public void listCategories() throws Throwable {
 
               HttpClient httpClientListCategories = HttpClients.createDefault();
               try {
@@ -202,7 +287,7 @@ import static org.junit.Assert.assertEquals;
         }
 
         @Given("The Customer modifies a category")
-        public void modifyCategory() {
+        public void modifyCategory() throws Throwable {
 
             HttpClient httpClientModifyCategory = HttpClients.createDefault();
             try {
@@ -214,7 +299,7 @@ import static org.junit.Assert.assertEquals;
                 String payloadModifyCategory = "{" +
                         " \"data\": " +
                         "{" +
-                        " \"id\": \"" + strOrganizationId + "\"" +
+                        " \"id\": \"" + strOrganizationId + "\"," +
                         " \"type\": \"Category\"," +
                         " \"attributes\": " +
                         "{" +
@@ -226,13 +311,35 @@ import static org.junit.Assert.assertEquals;
                 requestModifyCategory.setEntity(entityModifyCategory);
         HttpResponse resModifyCategory = httpClientModifyCategory.execute(requestModifyCategory);
 
-                Assert.assertEquals(201, resModifyCategory.getStatusLine().getStatusCode());
+                Assert.assertEquals(200, resModifyCategory.getStatusLine().getStatusCode());
 
         String strResponseCategory = EntityUtils.toString(resModifyCategory.getEntity());
                 System.out.println("Modify Category Response is: " + strResponseCategory);
         }
             catch (Exception e) {
             System.out.println(e.getMessage());
+            }
+        }
+
+        @Given("The Customer views a category")
+        public void viewCategory() throws Throwable {
+
+            HttpClient httpClientViewCategory = HttpClients.createDefault();
+            try {
+                URIBuilder builderViewCategory = new URIBuilder(config.getUrl() + "/categories/" + strCategoryId);
+                URI uriViewCategory = builderViewCategory.build();
+                //builderViewCategory.setParameter("criteria", "name =~ /^a/i OR email == \"first.last@groupbyinc.com\"");
+                HttpGet requestViewCategory = new HttpGet(uriViewCategory);
+                requestViewCategory.setHeader("Content-Type", "application/vnd.api+json");
+                HttpResponse resViewCategory = httpClientViewCategory.execute(requestViewCategory);
+
+                Assert.assertEquals(200, resViewCategory.getStatusLine().getStatusCode());
+
+                String strResponseCategory = resViewCategory.toString();
+                System.out.println("View Category Response is: " + strResponseCategory);
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -299,4 +406,12 @@ import static org.junit.Assert.assertEquals;
                 System.out.println(e.getMessage());
             }
         }
-}
+
+        @Then("Expect status code has value {int} in response")
+
+        public void assertStatusCode(int intStatusCode) throws Throwable {
+
+                assertThat(strResponseString, containsString(String.valueOf(intStatusCode)));
+                System.out.println("Enrich object has been created with status code " + String.valueOf(intStatusCode));
+        }
+    }

@@ -4,10 +4,10 @@ formatter.feature({
   "description": "",
   "keyword": "Feature"
 });
-formatter.background({
-  "name": "Create Enrich test fixtures",
+formatter.scenario({
+  "name": "Create an Enrich Organization",
   "description": "",
-  "keyword": "Background"
+  "keyword": "Scenario"
 });
 formatter.step({
   "name": "The Customer creates an organization",
@@ -15,6 +15,51 @@ formatter.step({
 });
 formatter.match({
   "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "List Enrich Organizations",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "The Customer lists organizations",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.listOrganizations()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Modify an Enrich Organization",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "The Customer modifies an organization",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.modifyOrganization()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "View an Enrich Organization",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "The Customer views an organization",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewOrganization()"
 });
 formatter.result({
   "status": "passed"
@@ -34,21 +79,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.background({
-  "name": "Create Enrich test fixtures",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "The Customer creates an organization",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.scenario({
   "name": "List Enrich Categories",
   "description": "",
@@ -59,22 +89,37 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()"
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.listCategories()"
 });
 formatter.result({
   "status": "passed"
 });
-formatter.background({
-  "name": "Create Enrich test fixtures",
+formatter.scenario({
+  "name": "Modify an Enrich Category",
   "description": "",
-  "keyword": "Background"
+  "keyword": "Scenario"
 });
 formatter.step({
-  "name": "The Customer creates an organization",
+  "name": "The Customer modifies a category",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.modifyCategory()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "View an Enrich Category",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "The Customer views a category",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.viewCategory()"
 });
 formatter.result({
   "status": "passed"
@@ -90,21 +135,6 @@ formatter.step({
 });
 formatter.match({
   "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.deleteCategory()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.background({
-  "name": "Create Enrich test fixtures",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "The Customer creates an organization",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "com.groupbyinc.steps.enrich.EnrichStepDefinitions.createOrganization()"
 });
 formatter.result({
   "status": "passed"
